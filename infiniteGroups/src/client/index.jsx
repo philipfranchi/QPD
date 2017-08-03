@@ -1,6 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.css';
 import './resources/css/index.scss';
 
 import Home from './resources/js/Home.jsx';
@@ -15,4 +16,4 @@ render((
       <Route path="/login" component={Login}/>
     </div>
   </Router>
-), document.getElementById('app'));
+), document.body);

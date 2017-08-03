@@ -11,7 +11,7 @@ module.exports = {
   entry: APP_DIR + '/index.jsx',
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'InfiniScroll'
+      title: 'InfiniScroll',
     })
   ],
   output: {
@@ -20,6 +20,10 @@ module.exports = {
   },
    module: {
       rules: [
+
+        { test: /\.(png|woff|woff2|eot|ttf|svg)$/, 
+          loader: 'url-loader?limit=100000'
+        },
         {
           test: /\.s?css$/,
           use: [
@@ -34,7 +38,7 @@ module.exports = {
             'file-loader'
           ]
         },
-		{
+		    {
           test: /\.jsx?$/,
           use: [
             'babel-loader'
