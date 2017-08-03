@@ -4,7 +4,7 @@ const app = express();
 app.use(express.static('dist'));
 
 
-app.use('/api', require('./api/index.js'));
+app.use('/api', require('./routes/api.js'));
 app.get('*', (req, res)=>{
 	res.sendFile('index.html', { root : __dirname + '/../../dist/'});
 });
