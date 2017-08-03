@@ -7,6 +7,7 @@ const BUILD_DIR = path.resolve(__dirname, 'dist');
 const APP_DIR = path.resolve(__dirname, 'src/client/');
 
 module.exports = {
+  devtool: 'sourcemap',
   entry: APP_DIR + '/index.jsx',
   plugins: [
     new HtmlWebpackPlugin({
