@@ -1,21 +1,46 @@
-var webpack = require('webpack');
-var path = require('path');
+const webpack = require('webpack');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var BUILD_DIR = path.resolve(__dirname, 'dist');
-var APP_DIR = path.resolve(__dirname, 'src/client/');
 
-var config = {
+const BUILD_DIR = path.resolve(__dirname, 'dist');
+const APP_DIR = path.resolve(__dirname, 'src/client/');
+
+module.exports = {
   entry: APP_DIR + '/index.jsx',
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'InfiniScroll'
+    })
+  ],
   output: {
-    path: BUILD_DIR,
-    filename: 'bundle.js'
+    filename: '[name].bundle.js',
+    path: BUILD_DIR
   },
-  module: {
-  	rules: [
-    	{ test: /\.jsx?$/, exclude: /node_modules/, loader: "babel-loader" }
-  		]
-	}
+   module: {
+      rules: [
+        {
+          test: /\.s?css$/,
+          use: [
+            'style-loader',
+            'css-loader',
+            'sass-loader'
+          ]
+        },
+        {
+          test: /\.(png|svg|jpg|gif)$/,
+          use: [
+            'file-loader'
+          ]
+        },
+		{
+          test: /\.jsx?$/,
+          use: [
+            'babel-loader'
+          ]
+        },
 
-};
+      ]
+    }
+  }
 
-module.exports = config;
